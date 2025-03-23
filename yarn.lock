@@ -10510,28 +10510,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-battery-info-example@workspace:example":
+"react-native-battery-check@workspace:.":
   version: 0.0.0-use.local
-  resolution: "react-native-battery-info-example@workspace:example"
-  dependencies:
-    "@babel/core": ^7.25.2
-    "@babel/preset-env": ^7.25.3
-    "@babel/runtime": ^7.25.0
-    "@react-native-community/cli": 15.0.1
-    "@react-native-community/cli-platform-android": 15.0.1
-    "@react-native-community/cli-platform-ios": 15.0.1
-    "@react-native/babel-preset": 0.77.0
-    "@react-native/metro-config": 0.77.0
-    "@react-native/typescript-config": 0.77.0
-    react: 18.3.1
-    react-native: 0.77.0
-    react-native-builder-bob: ^0.36.0
-  languageName: unknown
-  linkType: soft
-
-"react-native-battery-info@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "react-native-battery-info@workspace:."
+  resolution: "react-native-battery-check@workspace:."
   dependencies:
     "@commitlint/config-conventional": ^17.0.2
     "@evilmartians/lefthook": ^1.5.0
@@ -10556,6 +10537,25 @@ __metadata:
   peerDependencies:
     react: "*"
     react-native: "*"
+  languageName: unknown
+  linkType: soft
+
+"react-native-battery-info-example@workspace:example":
+  version: 0.0.0-use.local
+  resolution: "react-native-battery-info-example@workspace:example"
+  dependencies:
+    "@babel/core": ^7.25.2
+    "@babel/preset-env": ^7.25.3
+    "@babel/runtime": ^7.25.0
+    "@react-native-community/cli": 15.0.1
+    "@react-native-community/cli-platform-android": 15.0.1
+    "@react-native-community/cli-platform-ios": 15.0.1
+    "@react-native/babel-preset": 0.77.0
+    "@react-native/metro-config": 0.77.0
+    "@react-native/typescript-config": 0.77.0
+    react: 18.3.1
+    react-native: 0.77.0
+    react-native-builder-bob: ^0.36.0
   languageName: unknown
   linkType: soft
 

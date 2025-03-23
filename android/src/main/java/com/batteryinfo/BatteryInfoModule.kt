@@ -20,13 +20,9 @@ class BatteryInfoModule(reactContext: ReactApplicationContext) :
     // fun getBatteryStatusString(status: Int): String {
     //   return implementation.getBatteryStatusString()
     // }
-  
-    override func addListener(event:String) {
-        
-    }
-    override func removeListeners(event:Double){
-        
-    }
+
+    override fun addListener(event: String) {}
+    override fun removeListeners(count: Double) {}
 
     override fun getBatteryState(): String {
         return implementation.getBatteryState()
