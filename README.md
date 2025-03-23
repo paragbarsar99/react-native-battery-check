@@ -13,9 +13,9 @@ A **React Native Turbo Module** for monitoring battery status, power mode, and t
 ## Installation
 
 ```sh
-npm install react-native-battery-info
+npm install react-native-battery-module
 # or
-yarn add react-native-battery-info
+yarn add react-native-battery-module
 ```
 
 ## API Reference
@@ -33,7 +33,7 @@ const level = BatteryModule.getBatteryLevel();
 console.log(`Battery Level: ${level}%`);
 ```
 
-### 2. `getBatteryState(): TBatteryStatus`
+### 2. `getBatteryState(): string`
 
 Returns the battery charging state.
 
@@ -62,7 +62,7 @@ const isEnabled = BatteryModule.isLowPowerModeEnabled();
 console.log(`Low Power Mode: ${isEnabled ? 'Enabled' : 'Disabled'}`);
 ```
 
-### 4. `getThermalState(): TThermalStatus`
+### 4. `getThermalState(): string`
 
 Returns the current thermal state of the device.
 
@@ -81,7 +81,7 @@ const state = BatteryModule.getThermalState();
 console.log(`Thermal State: ${state}`);
 ```
 
-### 5. `startListenerWithEvent(eventType: EventType): void`
+### 5. `startListenerWithEvent(eventType: string): void`
 
 Starts listening to battery-related events.
 
@@ -96,7 +96,7 @@ Starts listening to battery-related events.
 BatteryModule.startListenerWithEvent('onBatteryLevelChange');
 ```
 
-### 6. `stopListenerWithEvent(eventType: EventType): void`
+### 6. `stopListenerWithEvent(eventType: string): void`
 
 Stops listening to the specified event.
 
@@ -106,28 +106,9 @@ Stops listening to the specified event.
 BatteryModule.stopListenerWithEvent('onBatteryLevelChange');
 ```
 
-## TypeScript Types
-
-For better type safety, the following TypeScript definitions are provided:
-
-```typescript
-type EventType = 'onBatteryLevelChange' | 'onBatteryStateChange';
-
-type TBatteryStatus =
-  | 'Charging'
-  | 'Unknown'
-  | 'Unplugged'
-  | 'Full';
-
- type TThermalStatus =
-  | 'Nominal'
-  | 'Fair'
-  | 'Serious'
-  | 'Critical'
-  | 'Unknown';
-```
-
 ## Usage Example
+
+A complete usage example can be found in the [`example` folder](./example) of this repository.
 
 ```js
 import BatteryModule from 'react-native-battery-module';
