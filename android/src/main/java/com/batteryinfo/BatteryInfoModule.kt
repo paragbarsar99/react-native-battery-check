@@ -3,21 +3,48 @@ package com.batteryinfo
 import com.facebook.react.bridge.ReactApplicationContext
 import com.facebook.react.module.annotations.ReactModule
 
-@ReactModule(name = BatteryInfoModule.NAME)
+@ReactModule(name = BatteryInfoImpl.NAME)
 class BatteryInfoModule(reactContext: ReactApplicationContext) :
-  NativeBatteryInfoSpec(reactContext) {
+        NativeBatteryInfoSpec(reactContext) {
 
-  override fun getName(): String {
-    return NAME
-  }
+    private var implementation: BatteryInfoImpl = BatteryInfoImpl(reactContext)
 
-  // Example method
-  // See https://reactnative.dev/docs/native-modules-android
-  override fun multiply(a: Double, b: Double): Double {
-    return a * b
-  }
+    override fun getName(): String {
+        return BatteryInfoImpl.NAME
+    }
 
-  companion object {
-    const val NAME = "BatteryInfo"
-  }
+    override fun getBatteryLevel(): Double {
+        return implementation.getBatteryLevel()
+    }
+
+    // fun getBatteryStatusString(status: Int): String {
+    //   return implementation.getBatteryStatusString()
+    // }
+  
+    override func addListener(event:String) {
+        
+    }
+    override func removeListeners(event:Double){
+        
+    }
+
+    override fun getBatteryState(): String {
+        return implementation.getBatteryState()
+    }
+
+    override fun isLowPowerModeEnabled(): String {
+        return implementation.isLowPowerModeEnabled()
+    }
+
+    override fun getThermalState(): String {
+        return implementation.getThermalState()
+    }
+
+    override fun stopListenerWithEvent(eventType: String?) {
+        implementation.stopListenerWithEvent(eventType)
+    }
+
+    override fun startListenerWithEvent(eventType: String?) {
+        implementation.startListenerWithEvent(eventType)
+    }
 }

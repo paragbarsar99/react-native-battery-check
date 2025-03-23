@@ -9,7 +9,7 @@ import java.util.HashMap
 
 class BatteryInfoPackage : BaseReactPackage() {
   override fun getModule(name: String, reactContext: ReactApplicationContext): NativeModule? {
-    return if (name == BatteryInfoModule.NAME) {
+    return if (name == BatteryInfoImpl.NAME) {
       BatteryInfoModule(reactContext)
     } else {
       null
@@ -19,14 +19,16 @@ class BatteryInfoPackage : BaseReactPackage() {
   override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
     return ReactModuleInfoProvider {
       val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      moduleInfos[BatteryInfoModule.NAME] = ReactModuleInfo(
-        BatteryInfoModule.NAME,
-        BatteryInfoModule.NAME,
-        false,  // canOverrideExistingModule
-        false,  // needsEagerInit
-        false,  // isCxxModule
-        true // isTurboModule
-      )
+      //      val isTurboModule = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
+      moduleInfos[BatteryInfoImpl.NAME] =
+              ReactModuleInfo(
+                      BatteryInfoImpl.NAME,
+                      BatteryInfoImpl.NAME,
+                      false, // canOverrideExistingModule
+                      false, // needsEagerInit
+                      false, // isCxxModule
+                      true // isTurboModule
+              )
       moduleInfos
     }
   }
