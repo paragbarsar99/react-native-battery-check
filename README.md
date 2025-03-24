@@ -1,4 +1,4 @@
-# React Native Battery Module
+# React Native Battery check
 
 A **React Native Turbo Module** for monitoring battery status, power mode, and thermal conditions on both **iOS and Android**. This module is compatible with both **New (Fabric) and Old Architecture**, ensuring seamless integration across different versions of React Native.
 
@@ -13,9 +13,9 @@ A **React Native Turbo Module** for monitoring battery status, power mode, and t
 ## Installation
 
 ```sh
-npm install react-native-battery-module
+npm install react-native-battery-check
 # or
-yarn add react-native-battery-module
+yarn add react-native-battery-check
 ```
 
 ## API Reference
