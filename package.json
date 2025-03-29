@@ -1,6 +1,6 @@
 {
   "name": "react-native-battery-check",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Module to get battery status for react native",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
