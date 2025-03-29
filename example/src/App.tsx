@@ -1,34 +1,53 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Button } from 'react-native';
 import {
-  getBatteryLevel,
-  isLowPowerModeEnabled,
-  getThermalState,
   addEventListenerWithEventType,
+  getBatteryLevel,
+  getBatteryState,
+  getThermalState,
+  isLowPowerModeEnabled,
   removeEventListenerWithEventType,
-} from 'react-native-battery-info';
+} from '../../src/index';
 
-const result = getBatteryLevel();
-const isLowPowerMode = isLowPowerModeEnabled();
-const thermalStatus = getThermalState();
 export default function App() {
-  const [batteryStatus, setBatteryStatus] = useState('');
+  const [state, setState] = useState({
+    level: '',
+    isLowPowerMode: '',
+    thermalStates: '',
+    status: '',
+  });
+  const getAll = useCallback(async () => {
+    const level = await getBatteryLevel();
+    const isLowPowerMode = await isLowPowerModeEnabled();
+    const thermalStates = await getThermalState();
+    const status = await getBatteryState();
+    setState({
+      level: level.toString(),
+      isLowPowerMode: isLowPowerMode,
+      thermalStates: thermalStates,
+      status: status,
+    });
+  }, []);
 
   useEffect(() => {
+    getAll();
     addEventListenerWithEventType('onBatteryStateChange', (status) => {
-      setBatteryStatus(status);
+      setState((prev) => ({
+        ...prev,
+        status: status,
+      }));
     });
     return () => {
       removeEventListenerWithEventType('onBatteryStateChange');
     };
-  }, []);
+  }, [getAll]);
 
   return (
     <View style={styles.container}>
-      <Text>Battery level: {result}</Text>
-      <Text>Status: {batteryStatus}</Text>
-      <Text>isLowPowerMode: {isLowPowerMode}</Text>
-      <Text>getThermalState: {thermalStatus}</Text>
+      <Text>Battery level: {state.level}</Text>
+      <Text>Status: {state.status}</Text>
+      <Text>isLowPowerMode: {state.isLowPowerMode}</Text>
+      <Text>thermalStates: {state.thermalStates}</Text>
       <View style={styles.box}>
         <Text style={styles.heading}>Battery State Change Listeners</Text>
 
@@ -36,7 +55,10 @@ export default function App() {
           title="addBatteryStateChange"
           onPress={() => {
             addEventListenerWithEventType('onBatteryStateChange', (status) => {
-              setBatteryStatus(status);
+              setState((prev) => ({
+                ...prev,
+                status: status,
+              }));
             });
           }}
         />
@@ -54,7 +76,10 @@ export default function App() {
           title="startBatteryLevelChangeListener"
           onPress={() => {
             addEventListenerWithEventType('onBatteryLevelChange', (status) => {
-              setBatteryStatus(status);
+              setState((prev) => ({
+                ...prev,
+                level: status,
+              }));
             });
           }}
         />
@@ -78,7 +103,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: '#000',
     gap: 10,
   },
   box: {
