@@ -1,7 +1,7 @@
 import { NativeModules, NativeEventEmitter } from 'react-native';
 
 const BatteryInfo =
-  global.__turboModuleProxy !== undefined
+  global && (global as any).__turboModuleProxy !== undefined
     ? require('./NativeBatteryInfo')
     : NativeModules.BatteryInfo;
 
