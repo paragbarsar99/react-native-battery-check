@@ -1,5 +1,11 @@
-import { NativeEventEmitter } from 'react-native';
-import BatteryInfo from './NativeBatteryInfo';
+import { NativeModules, NativeEventEmitter } from 'react-native';
+
+const BatteryInfo =
+  global.__turboModuleProxy !== undefined
+    ? require('./NativeBatteryInfo')
+    : NativeModules.BatteryInfo;
+
+console.log(BatteryInfo);
 
 export type EventType = 'onBatteryLevelChange' | 'onBatteryStateChange';
 
@@ -20,19 +26,19 @@ export type TThermalStaus =
 
 const eventEmitter = new NativeEventEmitter(BatteryInfo);
 
-export function getBatteryLevel(): number {
-  return BatteryInfo.getBatteryLevel();
+export async function getBatteryLevel(): Promise<number> {
+  return await BatteryInfo.getBatteryLevel();
 }
 
-export function getBatteryState(): TBatteryStatus {
-  return BatteryInfo.getBatteryState();
+export async function getBatteryState(): Promise<TBatteryStatus> {
+  return await BatteryInfo.getBatteryState();
 }
 
-export function isLowPowerModeEnabled(): string {
-  return BatteryInfo.isLowPowerModeEnabled();
+export async function isLowPowerModeEnabled(): Promise<string> {
+  return await BatteryInfo.isLowPowerModeEnabled();
 }
-export function getThermalState(): TThermalStaus {
-  return BatteryInfo.getThermalState();
+export async function getThermalState(): Promise<TThermalStaus> {
+  return await BatteryInfo.getThermalState();
 }
 
 export function addEventListenerWithEventType(

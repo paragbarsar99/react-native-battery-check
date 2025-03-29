@@ -19,7 +19,7 @@ class BatteryInfoPackage : BaseReactPackage() {
   override fun getReactModuleInfoProvider(): ReactModuleInfoProvider {
     return ReactModuleInfoProvider {
       val moduleInfos: MutableMap<String, ReactModuleInfo> = HashMap()
-      //      val isTurboModule = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
+      val isTurboModule = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED
       moduleInfos[BatteryInfoImpl.NAME] =
               ReactModuleInfo(
                       BatteryInfoImpl.NAME,
@@ -27,7 +27,7 @@ class BatteryInfoPackage : BaseReactPackage() {
                       false, // canOverrideExistingModule
                       false, // needsEagerInit
                       false, // isCxxModule
-                      true // isTurboModule
+                      isTurboModule // isTurboModule
               )
       moduleInfos
     }
