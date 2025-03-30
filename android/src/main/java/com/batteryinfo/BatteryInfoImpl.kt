@@ -35,7 +35,7 @@ class BatteryInfoImpl(private val reactContext: ReactApplicationContext) {
         return getBatteryStatusString(status)
     }
 
-    @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
+    // @RequiresApi(Build.VERSION_CODES.VANILLA_ICE_CREAM)
     fun isLowPowerModeEnabled(): String {
         val status = powerManager.isPowerSaveMode
         if (status) {
