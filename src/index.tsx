@@ -1,7 +1,6 @@
 import { NativeModules, NativeEventEmitter } from 'react-native';
 
-const BatteryInfo  = NativeModules.BatteryCheck;
-
+const BatteryInfo = NativeModules.BatteryCheck;
 
 export type EventType = 'onBatteryLevelChange' | 'onBatteryStateChange';
 
