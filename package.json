@@ -1,6 +1,6 @@
 {
   "name": "react-native-battery-check",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Battery info for IOS/Android in React Native ",
   "source": "./src/index.tsx",
   "main": "./lib/commonjs/index.js",
