@@ -1,6 +1,7 @@
 # React Native Battery Check
 
-A **React Native Turbo Module** for monitoring battery status, power mode, and thermal conditions on both **iOS and Android**. This module is compatible with both **New (Fabric) and Old Architecture**, ensuring seamless integration across different versions of React Native.
+A React Native Modul**e** for monitoring battery status, power mode, and thermal conditions on both iOS and Android.\
+compatible with both New (Fabric) and Old Architecture.
 
 ## Features
 
@@ -21,20 +22,21 @@ A **React Native Turbo Module** for monitoring battery status, power mode, and t
 
 ## API Reference
 
-### 1. `getBatteryLevel(): number`
+### 1. `getBatteryLevel(): Promise<number>`
 
 Retrieves the current battery level as a percentage (0-100).
 
 #### Example:
 
 ```js
-import BatteryModule from 'react-native-battery-module';
+import BatteryModule from 'react-native-battery-check';
 
-const level = BatteryModule.getBatteryLevel();
-console.log(`Battery Level: ${level}%`);
+BatteryModule.getBatteryLevel().then((level) => {
+  console.log(`Battery Level: ${level}%`);
+});
 ```
 
-### 2. `getBatteryState(): string`
+### 2. `getBatteryState(): Promise<string>`
 
 Returns the battery charging state.
 
@@ -48,22 +50,24 @@ Returns the battery charging state.
 #### Example:
 
 ```js
-const state = BatteryModule.getBatteryState();
-console.log(`Battery State: ${state}`);
+BatteryModule.getBatteryState().then((state) => {
+  console.log(`Battery State: ${state}`);
+});
 ```
 
-### 3. `isLowPowerModeEnabled(): boolean`
+### 3. `isLowPowerModeEnabled(): Promise<boolean>`
 
 Checks if Low Power Mode is enabled.
 
 #### Example:
 
 ```js
-const isEnabled = BatteryModule.isLowPowerModeEnabled();
-console.log(`Low Power Mode: ${isEnabled ? 'Enabled' : 'Disabled'}`);
+BatteryModule.isLowPowerModeEnabled().then((isEnabled) => {
+  console.log(`Low Power Mode: ${isEnabled ? 'Enabled' : 'Disabled'}`);
+});
 ```
 
-### 4. `getThermalState(): string`
+### 4. `getThermalState(): Promise<string>`
 
 Returns the current thermal state of the device.
 
@@ -78,8 +82,9 @@ Returns the current thermal state of the device.
 #### Example:
 
 ```js
-const state = BatteryModule.getThermalState();
-console.log(`Thermal State: ${state}`);
+BatteryModule.getThermalState().then((state) => {
+  console.log(`Thermal State: ${state}`);
+});
 ```
 
 ### 5. `startListenerWithEvent(eventType: string): void`
@@ -109,15 +114,17 @@ BatteryModule.stopListenerWithEvent('onBatteryLevelChange');
 
 ## Usage Example
 
-A complete usage example can be found in the [`example` folder](./example) of this repository.
+A complete usage example can be found in the [`example`](./example)[ folder](./example) of this repository.
 
 ```js
-import BatteryModule from 'react-native-battery-module';
+import BatteryModule from 'react-native-battery-check';
 
 const checkBattery = () => {
-  const level = BatteryModule.getBatteryLevel();
-  const state = BatteryModule.getBatteryState();
-  console.log(`Battery: ${level}% - State: ${state}`);
+  BatteryModule.getBatteryLevel().then((level) => {
+    BatteryModule.getBatteryState().then((state) => {
+      console.log(`Battery: ${level}% - State: ${state}`);
+    });
+  });
 };
 
 BatteryModule.startListenerWithEvent('onBatteryLevelChange');
