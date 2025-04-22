@@ -13,9 +13,9 @@ compatible with both New (Fabric) and Old Architecture.
 
 ## Installation
 
-## yarn add react-native-battery-check
-               or
-## npm install react-native-battery-check
+# yarn add react-native-battery-check
+               
+# npm install react-native-battery-check
 
 ### React Native Architecture Support Version
 
